@@ -3,7 +3,7 @@
 Plugin Name: Mailrelay
 Plugin URI: http://mailrelay.com
 Description: Easily sync your Wordpress users with Mailrelay.
-Version: 1.7
+Version: 1.7.1
 Author: Mailrelay.com
 */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('MAILRELAY_PLUGIN_VERSION')) {
-    define('MAILRELAY_PLUGIN_VERSION', '1.6.0');
+    define('MAILRELAY_PLUGIN_VERSION', '1.7.1');
 }
 
 if (function_exists('is_admin') && is_admin()) {
@@ -65,8 +65,7 @@ if (function_exists('is_admin') && is_admin()) {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-
+        
         $headers = array(
             'X-Request-Origin: Wordpress|'. MAILRELAY_PLUGIN_VERSION .'|'. get_bloginfo('version')
         );
@@ -195,8 +194,7 @@ if (function_exists('is_admin') && is_admin()) {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-
+        
         $headers = array(
             'X-Request-Origin: Wordpress|'. MAILRELAY_PLUGIN_VERSION .'|'. get_bloginfo('version')
         );
@@ -263,8 +261,7 @@ if (function_exists('is_admin') && is_admin()) {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-
+        
         $headers = array(
             'X-Request-Origin: Wordpress|'. MAILRELAY_PLUGIN_VERSION .'|'. get_bloginfo('version')
         );
@@ -423,8 +420,7 @@ if (function_exists('is_admin') && is_admin()) {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-
+        
         $headers = array(
             'X-Request-Origin: Wordpress|'. MAILRELAY_PLUGIN_VERSION .'|'. get_bloginfo('version')
         );
@@ -521,8 +517,7 @@ if (function_exists('is_admin') && is_admin()) {
             curl_setopt($curl, CURLOPT_POST, 1);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curl, CURLOPT_SSLVERSION, 3);
-
+            
             $headers = array(
                 'X-Request-Origin: Wordpress|'. MAILRELAY_PLUGIN_VERSION .'|'. get_bloginfo('version')
             );
