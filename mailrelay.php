@@ -3,7 +3,7 @@
 Plugin Name: Mailrelay
 Plugin URI: http://mailrelay.com
 Description: Easily sync your Wordpress users with Mailrelay.
-Version: 1.7.1
+Version: 1.7.2
 Author: Mailrelay.com
 */
 
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('MAILRELAY_PLUGIN_VERSION')) {
-    define('MAILRELAY_PLUGIN_VERSION', '1.7.1');
+    define('MAILRELAY_PLUGIN_VERSION', '1.7.2');
 }
 
 if (function_exists('is_admin') && is_admin()) {
@@ -43,6 +43,10 @@ if (function_exists('is_admin') && is_admin()) {
 
     function mailrelay_sync_users() {
         include 'sync_users.php';
+    }
+
+    function mailrelay_woo_commmerce_installed() {
+        return in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')));
     }
 
     function mailrelay_get_groups() {
@@ -489,8 +493,12 @@ if (function_exists('is_admin') && is_admin()) {
     }
 
     if (isset($_REQUEST['action']) && ($_REQUEST['action'] == 'mailrelay_sync_users_group')) {
-        $querystr = "SELECT * FROM $wpdb->users";
-        $users = $wpdb->get_results($querystr, OBJECT);
+        if ($_REQUEST['only_woo_commerce'] == 'on') {
+            $users = get_users('role=customer');
+        } else {
+            $users = get_users();
+        }
+        
         $groups = $_REQUEST['group'];
 
         // These will be entered by user.
